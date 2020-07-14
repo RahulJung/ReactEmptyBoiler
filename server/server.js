@@ -3,23 +3,44 @@ const path = require("path");
 const app = express();
 const bodyParser = require("body-parser");
 const port = 4000;
-const { postTask, getTasks, deleteTask } = require("../db/querys.js");
+const { postTask, getTasks, deleteTask } = require("../db/query.js");
 
 app.use(express.static(path.join(__dirname, "../client/dist/")));
 app.use(bodyParser.json());
 
-app.get("/tasks", (req, res) => {
- 
+app.get("/api/tasks", (req, res) => {
+  getTasks((err, data) => {
+    if (err) {
+      console.log("problem getting tasks from server");
+      res.sendStatus(500);
+    } else {
+      res.send(data);
+    }
+  });
 });
 
-app.post("/tasks", (req, res) => {
-
+app.post("/api/tasks", (req, res) => {
+  postTask(req.body.task, (err, data) => {
+    if (err) {
+      console.log("problem attempting to post task in server");
+      res.sendStatus(500);
+    } else {
+      res.send(data);
+    }
+  });
 });
 
-app.delete("/tasks", (req, res) => {
-
+app.delete("/api/tasks/:id", (req, res) => {
+  deleteTask(req.params.id, (err, data) => {
+    if (err) {
+      console.log("problem deleting task in server");
+      res.sendStatus(500);
+    } else {
+      res.send(data);
+    }
+  })
 });
 
 app.listen(port, () => {
-  console.log(`hurray, you're connected to port ${port}`);
+  console.log(`you're connected to port ${port}`);
 });

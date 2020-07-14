@@ -9,7 +9,7 @@ class App extends React.Component {
 
     this.state = {
       todolist: [],
-      input: '',
+      input: ''
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -24,33 +24,50 @@ class App extends React.Component {
   }
 
   getToDos() {
-    console.log('this gets data and is called in componentDidMount')
-    //write get request
-  
+    Axios.get('/api/tasks')
+    .then((res) => {
+      console.log('from Axios GET request: ', res);
+      this.setState({
+        todolist: res.data
+      });
+    })
+    .catch((err) => console.log('problem with Axios GET request: ', err));
   }
 
-  
   addTask() {
-    console.log('this does a post request');
-    //write post request
-    
+    // send new task from input bar to server in the form of an object
+    Axios.post('/api/tasks', {
+      task: this.state.input
+    })
+    .then((res) => {
+      console.log('from Axios POST request: ', res);
+      this.setState({
+        input: ''
+      });
+    })
+    // re-render all to-dos to the screen
+    .then(() => this.getToDos())
+    .catch((err) => console.log('problem with Axios POST request: ', err));
   }
   
   deleteTask(id) {
-    console.log(`this deletes an id matching ${id}`);
-    //write delete request
+    console.log(`deleting task with id: ${id}`);
+    Axios.delete(`/api/tasks/${id}`)
+    .then(() => this.getToDos())
+    .catch((err) => console.log('problem with Axios DELETE request: ', err));
   }
   
   onInputChange(event) {
+    const {value} = event.target;
     this.setState({
-      input: event.target.value,
+      input: value
     });
   }
 
   render() {
     return (
       <div>
-        <h1>toDo list</h1>
+        <h1>To-Do list</h1>
         <InputBar
           value={this.state.input}
           onInputChange={this.onInputChange}
