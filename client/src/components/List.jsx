@@ -3,17 +3,17 @@ import ListItem from './ListItem';
 
 function List(props){
   return (
-    <div>
+    <div className='task-list'>
       <ul>
-        {props.todolist.map((thing, i) => (
-          <div key={i}>
-            <ListItem todoitem={thing} doneButtonClick={props.doneButtonClick} />
+        {props.todolist.map((task, index) => (
+          <div key={index}>
+            <ListItem todoitem={task} 
+              doneButtonClick={props.doneButtonClick} />
           </div>
         ))}
       </ul>
     </div>
   )
-
 };
 
 export default List;
