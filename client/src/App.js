@@ -8,13 +8,14 @@ class App extends React.Component {
 
     this.state = {
       todolist: ['learn to code', 'make todolist', 'get paid'],
-      input: '',
+      input: ''
     }
     
-    this.onInputChange = this.onInputChange.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
+    this.onInputChange = this.onInputChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
     this.doneButtonClick = this.doneButtonClick.bind(this);
   }
+
   onInputChange(event){
     this.setState({ 
       input:event.target.value
@@ -38,12 +39,19 @@ class App extends React.Component {
     })
   }
 
-  render () {
+  render() {
     return (
       <div>
-        <h1>toDo list</h1> 
-        <InputBar value={this.state.input} onInputChange={this.onInputChange} onSubmit = {this.onSubmit} />
-        <List todolist={this.state.todolist} doneButtonClick={this.doneButtonClick} />
+        <h1>ToDo list</h1>
+        <InputBar
+          value={this.state.input}
+          onInputChange={this.onInputChange}
+          onSubmit={this.onSubmit}
+        />
+        <List
+          todolist={this.state.todolist}
+          doneButtonClick={this.doneButtonClick}
+        />
       </div>
     )
   }
