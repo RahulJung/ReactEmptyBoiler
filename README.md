@@ -34,4 +34,4 @@ On the third rebuild: Do not reference code you already wrote. Instead, rely on 
 
 **Note:**
 
-If you run in to WEBPACK or BABEL issues please get help. This activity is not designed for you to worry about that right now.
+If you run into WEBPACK or BABEL issues please get help. This activity is not designed for you to worry about that right now.
