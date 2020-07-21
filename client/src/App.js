@@ -1,7 +1,7 @@
 import React from "react";
 import InputBar from "./components/InputBar";
 import List from "./components/List";
-import Axios from "axios";
+import axios from "axios";
 
 class App extends React.Component {
   constructor(props) {
@@ -9,8 +9,8 @@ class App extends React.Component {
 
     this.state = {
       todolist: [],
-      input: '',
-    };
+      input: ''
+    }
 
     this.onInputChange = this.onInputChange.bind(this);
     this.addTask = this.addTask.bind(this);
@@ -57,7 +57,7 @@ class App extends React.Component {
     .then(() => {
       this.getToDos();
     })
-    .catch((err) => console.log('couldn\'t delet task from client -->', err));
+    .catch((err) => console.log(`couldn't delete task from client -->`, err));
   }
 
   render() {
