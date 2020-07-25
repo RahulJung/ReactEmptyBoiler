@@ -1,7 +1,7 @@
 import React from "react";
 import InputBar from "./components/InputBar";
 import List from "./components/List";
-import Axios from "axios";
+import axios from "axios";
 
 class App extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class App extends React.Component {
   }
 
   getToDos() {
-    Axios.get('/api/tasks')
+    axios.get('/api/tasks')
     .then((res) => {
       console.log('from Axios GET request: ', res);
       this.setState({
@@ -36,7 +36,7 @@ class App extends React.Component {
 
   addTask() {
     // send new task from input bar to server in the form of an object
-    Axios.post('/api/tasks', {
+    axios.post('/api/tasks', {
       task: this.state.input
     })
     .then((res) => {
@@ -52,7 +52,7 @@ class App extends React.Component {
   
   deleteTask(id) {
     console.log(`deleting task with id: ${id}`);
-    Axios.delete(`/api/tasks/${id}`)
+    axios.delete(`/api/tasks/${id}`)
     .then(() => this.getToDos())
     .catch((err) => console.log('problem with Axios DELETE request: ', err));
   }
