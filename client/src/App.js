@@ -23,7 +23,7 @@ class App extends React.Component {
   }
 
   getToDos() {
-    Axios.get('/tasks').then((response) => {
+    axios.get('/tasks').then((response) => {
       console.log('this is from the get request', response);
       this.setState({
         todolist: response.data,
@@ -38,7 +38,7 @@ class App extends React.Component {
   }
 
   addTask() {
-    Axios.post('/tasks', {
+    axios.post('/tasks', {
       task: this.state.input,
     })
     .then((response) => {
@@ -53,7 +53,7 @@ class App extends React.Component {
   }
 
   deleteTask(id) {
-    Axios.delete(`/tasks/${id}`)
+    axios.delete(`/tasks/${id}`)
     .then(() => {
       this.getToDos();
     })
