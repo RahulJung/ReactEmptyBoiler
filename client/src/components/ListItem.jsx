@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ListItem({todoitem, deleteTask, id}){
+function ListItem({todoitem, deleteTask, id}) {
 
   const deleteTaskHandler = () => {
     deleteTask(id)
@@ -12,6 +12,6 @@ function ListItem({todoitem, deleteTask, id}){
       <button onClick={deleteTaskHandler}>Delete</button>
     </div>
   )
-}
+};
 
 export default ListItem;
