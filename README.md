@@ -28,7 +28,7 @@ On the third rebuild: Do not reference code you already wrote. Instead, rely on 
 - Run `npm update`
 - To start your react app run `npm run start:react`
 - IF NOT USING A DATABASE: to start your server run `npm run dev-server`
-- IF USING A DATBASE: before starting your server make sure to change your database configuration inside of db/queries.js
+- IF USING A DATBASE: before starting your server make sure to change your database configuration in db/config.js
 - To seed your database run `npm run seed`
 - To start your server run `npm run dev-server`
 
