@@ -10,7 +10,7 @@ class App extends React.Component {
     this.state = {
       todolist: [],
       input: ''
-    }
+    };
 
     this.onInputChange = this.onInputChange.bind(this);
     this.addTask = this.addTask.bind(this);
@@ -19,51 +19,54 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    // get data on initial render
     this.getToDos();
   }
 
   getToDos() {
-    axios.get('/tasks').then((response) => {
-      console.log('this is from the get request', response);
+    axios.get('/tasks')
+    .then((res) => {
+      console.log('from axios get request: ', res);
       this.setState({
-        todolist: response.data,
+        todolist: res.data
       });
-    });
-  }
-
-  onInputChange(event) {
-    this.setState({
-      input: event.target.value,
-    });
+    })
+    .catch((err) => console.log('problem with axios GET request: ', err));  
   }
 
   addTask() {
+    // send new task from input bar to server in the form of an object
     axios.post('/tasks', {
       task: this.state.input,
     })
-    .then((response) => {
+    .then((res) => {
+      console.log('from axios POST request: ', res);
       this.setState({
-        input: '',
+        input: ''
       });
     })
+    // re-render all tasks to the screen
     .then(() => this.getToDos())
-    .catch((err) => {
-      console.log('something went wrong with posting a task', err);
-    });
+    .catch((err) => console.log('problem with axios POST request: ', err));
   }
 
   deleteTask(id) {
+    console.log(`deleting task with id: ${id}`);
     axios.delete(`/tasks/${id}`)
-    .then(() => {
-      this.getToDos();
-    })
-    .catch((err) => console.log(`couldn't delete task from client -->`, err));
+    .then(() => this.getToDos())
+    .catch((err) => console.log('problem with axios DELETE request: ', err));
+  }
+  
+  onInputChange(event) {
+    this.setState({
+      input: event.target.value
+    });
   }
 
   render() {
     return (
       <div>
-        <h1>toDo list</h1>
+        <h1>ToDo List</h1>
         <InputBar
           value={this.state.input}
           onInputChange={this.onInputChange}
