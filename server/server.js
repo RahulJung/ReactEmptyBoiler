@@ -3,7 +3,7 @@ const path = require("path");
 const app = express();
 const bodyParser = require("body-parser");
 const port = 1234;
-const { postTask, getTasks, deleteTask } = require("../db/querys.js");
+const { postTask, getTasks, deleteTask } = require("../db/query.js");
 
 app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(bodyParser.json());
