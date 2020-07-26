@@ -41,5 +41,5 @@ app.delete('/api/tasks/:id', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`connected to port ${port}`);
+  console.log(`listening on port ${port}`);
 });
