@@ -1,5 +1,5 @@
+client/dist
 node_modules
 .DS_Store
 .env
-#./db/config.js
-
+#db/config.js
