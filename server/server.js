@@ -4,7 +4,7 @@ const app = express();
 const bodyParser = require("body-parser");
 require('dotenv').config();
 const port = process.env.PORT;
-const { postTask, getTasks, deleteTask } = require("../db/querys.js");
+const { postTask, getTasks, deleteTask } = require("../db/query.js");
 
 app.use(express.static(path.join(__dirname, "../client/dist/")));
 app.use(bodyParser.json());
