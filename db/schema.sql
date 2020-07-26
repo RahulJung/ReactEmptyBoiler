@@ -8,6 +8,7 @@ CREATE TABLE tasks (
   task VARCHAR(255) NOT NULL
 );
 
-INSERT INTO tasks (task) VALUES ('thank Ben for his help'),
+INSERT INTO tasks (task)
+VALUES ('thank Ben for his help'),
   ('get React event handlers down'),
-  ('ace the TA');
+  ('ace the Technical Assessment');
