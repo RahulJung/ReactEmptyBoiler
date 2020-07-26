@@ -26,12 +26,12 @@ class App extends React.Component {
   getToDos() {
     axios.get('/api/tasks')
     .then((res) => {
-      console.log('from Axios GET request: ', res);
+      console.log('axios GET request: ', res);
       this.setState({
         todolist: res.data
       });
     })
-    .catch((err) => console.log('problem with Axios GET request: ', err));
+    .catch((err) => console.log('problem with axios GET request: ', err));
   }
 
   addTask() {
@@ -40,21 +40,21 @@ class App extends React.Component {
       task: this.state.input
     })
     .then((res) => {
-      console.log('from Axios POST request: ', res);
+      console.log('from axios POST request: ', res);
       this.setState({
         input: ''
       });
     })
-    // re-render all to-dos to the screen
+    // re-render all tasks to the screen
     .then(() => this.getToDos())
-    .catch((err) => console.log('problem with Axios POST request: ', err));
+    .catch((err) => console.log('problem with axios POST request: ', err));
   }
   
   deleteTask(id) {
     console.log(`deleting task with id: ${id}`);
     axios.delete(`/api/tasks/${id}`)
     .then(() => this.getToDos())
-    .catch((err) => console.log('problem with Axios DELETE request: ', err));
+    .catch((err) => console.log('problem with axios DELETE request: ', err));
   }
   
   onInputChange(event) {
@@ -67,7 +67,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>To-Do list</h1>
+        <h1>ToDo List</h1>
         <InputBar
           value={this.state.input}
           onInputChange={this.onInputChange}
