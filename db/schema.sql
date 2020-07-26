@@ -8,6 +8,6 @@ CREATE TABLE tasks (
   task VARCHAR(255) NOT NULL
 );
 
-insert into tasks (task) values ('make todolist');
-insert into tasks (task) values ('learn react');
-insert into tasks (task) values ('get paid');
+INSERT INTO tasks (task) VALUES ('thank Ben for his help');
+INSERT INTO tasks (task) VALUES ('get React event handlers down');
+INSERT INTO tasks (task) VALUES ('ace the TA');
