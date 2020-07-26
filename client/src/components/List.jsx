@@ -5,9 +5,9 @@ function List({todolist, deleteTask}){
   return (
     <div>
       <ul>
-        {todolist.map((thing, i) => (
-          <div key={i}>
-            <ListItem id={thing.id} todoitem={thing.task} deleteTask={deleteTask} />
+        {todolist.map((action, index) => (
+          <div key={index}>
+            <ListItem id={action.id} todoitem={action.task} deleteTask={deleteTask} />
           </div>
         ))}
       </ul>
