@@ -3,7 +3,7 @@ import React from 'react';
 function ListItem({todoitem, deleteTask, id}) {
 
   const deleteTaskHandler = () => {
-    deleteTask(id)
+    deleteTask(id);
   };
   
   return ( 
