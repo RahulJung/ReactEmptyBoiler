@@ -36,7 +36,7 @@ class App extends React.Component {
 
   addTask() {
     // send new task from input bar to server in the form of an object
-    axios.post('/api/tasks', {
+    axios.post('/api/task', {
       task: this.state.input
     })
     .then((res) => {
