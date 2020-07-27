@@ -18,7 +18,7 @@ app.get('/tasks', (req, res) => {
   });
 });
 
-app.post('/tasks', (req, res) => {
+app.post('/task', (req, res) => {
   postTask(req.body.task, (err, data) => {
     if (err) {
       console.log('problem attempting to post task in server');
