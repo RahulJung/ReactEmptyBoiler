@@ -26,10 +26,14 @@ On the third rebuild: Do not reference code you already wrote. Instead, rely on 
 - Navigate to the root directory
 - Run `npm install`
 - Run `npm update`
-- IF NOT USING A DATABASE: to start your server run `npm run dev-server`
-- IF USING A DATBASE: before starting your server make sure to change your database configuration in db/query.js
-- To seed your database run `npm run seed`
-- To start your server run `npm run dev-server`
+
+- If NOT using a database, start webpack with: `npm run dev-compile`
+- To start your server: `npm run dev-server`
+
+- If using a database, make sure your MySQL server is running and be sure to change your login details in db/query.js
+- To seed your database: `npm run seed`
+- Start webpack with: `npm run dev-compile`
+- To start your server: `npm run dev-server`
 
 **Note:**
 
