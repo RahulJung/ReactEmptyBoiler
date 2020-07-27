@@ -14,21 +14,21 @@ connection.connect(err => {
   }
 });
 
-const postTask = (task, callback) => {
-  connection.query(`INSERT INTO tasks (task) VALUES ('${task}')`, (err, data) => {
-    if (err) {
-      console.log('problem posting task in query');
-      callback(err, null);
-    } else {
-      callback(null, data);
-    }
-  })
-}
-
 const getTasks = (callback) => {
   connection.query('SELECT * FROM tasks', (err, data) => {
     if (err) {
       console.log('problem getting all tasks in query');
+      callback(err, null);
+    } else {
+      callback(null, data);
+    }
+  });
+};
+
+const postTask = (task, callback) => {
+  connection.query(`INSERT INTO tasks (task) VALUES ('${task}')`, (err, data) => {
+    if (err) {
+      console.log('problem posting task in query');
       callback(err, null);
     } else {
       callback(null, data);
