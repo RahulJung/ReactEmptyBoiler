@@ -8,7 +8,11 @@ function List({todolist, deleteTask}) {
       <ul>
         {todolist.map((action, index) => (
           <div key={index}>
-            <ListItem id={action.id} todoitem={action.task} deleteTask={deleteTask} />
+            <ListItem
+              id={action.id}
+              todoitem={action.task}
+              deleteTask={deleteTask}
+            />
           </div>
         ))}
       </ul>
