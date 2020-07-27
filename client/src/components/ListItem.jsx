@@ -3,12 +3,12 @@ import React from 'react';
 function ListItem({todoitem, deleteTask, id}) {
   
   const deleteTaskHandler = () => {
-    deleteTask(id)
+    deleteTask(id);
   };
   
   return ( 
     <div key={id}>
-      <span>{todoitem}</span>
+      <span>{todoitem} </span>
       <button onClick={deleteTaskHandler}>Delete</button>
     </div>
   )
