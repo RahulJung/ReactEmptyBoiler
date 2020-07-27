@@ -8,11 +8,10 @@ connection.connect(err => {
   }
 });
 
-const postTask = (task, callback) => {
-  // the task input comes from the user so it must be sanitized to protect our db
-  connection.query('INSERT INTO tasks (task) VALUES (?)', [task], (err, data) => {
+const getTasks = (callback) => {
+  connection.query('SELECT * FROM tasks', (err, data) => {
     if (err) {
-      console.log('problem posting task in query');
+      console.log('problem getting all tasks in query');
       callback(err, null);
     } else {
       callback(null, data);
@@ -20,10 +19,11 @@ const postTask = (task, callback) => {
   });
 };
 
-const getTasks = (callback) => {
-  connection.query('SELECT * FROM tasks', (err, data) => {
+const postTask = (task, callback) => {
+  // the task input comes from the user so it must be sanitized to protect our db
+  connection.query('INSERT INTO tasks (task) VALUES (?)', [task], (err, data) => {
     if (err) {
-      console.log('problem getting all tasks in query');
+      console.log('problem posting task in query');
       callback(err, null);
     } else {
       callback(null, data);
