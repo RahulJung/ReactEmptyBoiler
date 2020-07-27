@@ -8,7 +8,7 @@ function ListItem({todoitem, deleteTask, id}) {
   
   return ( 
     <div key={id}>
-      <span>{todoitem} </span>
+      <span>{todoitem}</span>
       <button onClick={deleteTaskHandler}>Delete</button>
     </div>
   )
