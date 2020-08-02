@@ -1,19 +1,30 @@
 import React from 'react';
+import axios from 'axios';
 
 class App extends React.Component {
-  constructor() {
+  constructor(){
     super();
-    
+    this.state = {
+      todolist : [],
+      input: ''
+    }
+    this.getTodos = this.getTodos.bind(this);
   }
-  
-  render () {
+
+  getTodos() {
+    axios.get('/tasks')
+    .then( (res) => {
+      this.setState({
+        todolist: res.data
+      })
+    })
+    .catch( (err) => console.log("Error from getTodos"))
+  }
+
+  render() {
     return (
-      <div>
-        <h1>ToDo List</h1> 
-        <span>Let's build a todo list!</span>
-      </div>
+    <div>Welcome to Todolist App</div>
     )
   }
 }
-
 export default App;
